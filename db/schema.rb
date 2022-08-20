@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_03_185387) do
+ActiveRecord::Schema.define(version: 2022_08_20_181316) do
 
   create_table "action_mailbox_inbound_emails", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -620,7 +620,9 @@ ActiveRecord::Schema.define(version: 2021_12_03_185387) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "compare_at_amount", precision: 10, scale: 2
+    t.integer "position"
     t.index ["deleted_at"], name: "index_spree_prices_on_deleted_at"
+    t.index ["position"], name: "index_spree_prices_on_position"
     t.index ["variant_id", "currency"], name: "index_spree_prices_on_variant_id_and_currency"
     t.index ["variant_id"], name: "index_spree_prices_on_variant_id"
   end
