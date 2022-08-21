@@ -15,28 +15,28 @@
       <% end %>
 
       <div class="form-group" data-hook="sku">
-        <%= f.label :sku, Spree.t(:sku) %>
-        <%= f.text_field :sku, class: 'form-control' %>
+        <%= f.label :sku, raw(Spree.t(:sku)) + required_span_tag %>
+        <%= f.text_field :sku, class: 'form-control', required: true %>
       </div>
 
       <div class="form-group" data-hook="price">
-        <%= f.label :price, Spree.t(:price) %>
-        <%= f.text_field :price, value: number_to_currency(@variant.price, unit: ''), class: 'form-control' %>
+        <%= f.label :price, raw(Spree.t(:price)) + required_span_tag %>
+        <%= f.text_field :price, value: number_to_currency(@variant.price, unit: ''), class: 'form-control', required: true %>
       </div>
 
       <div class="form-group" data-hook="price1">
-        <%= f.label :price1, Spree.t(:price1) %>
-        <%= f.text_field :price1, value: number_to_currency(@variant.price1, unit: ''), class: 'form-control' %>
+        <%= f.label :price1, raw(Spree.t(:price1)) + required_span_tag %>
+        <%= f.text_field :price1, value: number_to_currency(@variant.price1, unit: ''), class: 'form-control', required: true %>
       </div>
 
       <div class="form-group" data-hook="price2">
-        <%= f.label :price2, Spree.t(:price2) %>
-        <%= f.text_field :price2, value: number_to_currency(@variant.price2, unit: ''), class: 'form-control' %>
+        <%= f.label :price2, raw(Spree.t(:price2)) + required_span_tag %>
+        <%= f.text_field :price2, value: number_to_currency(@variant.price2, unit: ''), class: 'form-control', required: true %>
       </div>
 
       <div class="form-group" data-hook="price3">
-        <%= f.label :price3, Spree.t(:price3) %>
-        <%= f.text_field :price3, value: number_to_currency(@variant.price3, unit: ''), class: 'form-control' %>
+        <%= f.label :price3, raw(Spree.t(:price3)) + required_span_tag %>
+        <%= f.text_field :price3, value: number_to_currency(@variant.price3, unit: ''), class: 'form-control', required: true %>
       </div>
 
       <div class="form-group" data-hook="compare_at_price">

@@ -620,7 +620,7 @@ ActiveRecord::Schema.define(version: 2022_08_20_181316) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "compare_at_amount", precision: 10, scale: 2
-    t.integer "position"
+    t.integer "position", default: 9
     t.index ["deleted_at"], name: "index_spree_prices_on_deleted_at"
     t.index ["position"], name: "index_spree_prices_on_position"
     t.index ["variant_id", "currency"], name: "index_spree_prices_on_variant_id_and_currency"

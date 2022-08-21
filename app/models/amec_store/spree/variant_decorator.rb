@@ -3,19 +3,19 @@ module AmecStore::Spree
     def self.prepended(base)
       base.class_eval do
         has_one :default_price,
-              -> { with_deleted.where(currency: Spree::Store.default.default_currency, position: 0) },
+              -> { where(currency: Spree::Store.default.default_currency, position: 0) },
               class_name: 'Spree::Price',
               dependent: :destroy
         has_one :default_price1,
-              -> { with_deleted.where(currency: Spree::Store.default.default_currency, position: 1) },
+              -> { where(currency: Spree::Store.default.default_currency, position: 1) },
               class_name: 'Spree::Price',
               dependent: :destroy
         has_one :default_price2,
-              -> { with_deleted.where(currency: Spree::Store.default.default_currency, position: 2) },
+              -> { where(currency: Spree::Store.default.default_currency, position: 2) },
               class_name: 'Spree::Price',
               dependent: :destroy
         has_one :default_price3,
-              -> { with_deleted.where(currency: Spree::Store.default.default_currency, position: 3) },
+              -> { where(currency: Spree::Store.default.default_currency, position: 3) },
               class_name: 'Spree::Price',
               dependent: :destroy
         has_many :prices,
@@ -27,7 +27,7 @@ module AmecStore::Spree
     end
 
     def price1=(p)
-      find_or_build_default_price1.amount = p
+      find_or_build_default_price1.amount = p if p.present?
     end
 
     def find_or_build_default_price1
@@ -35,7 +35,7 @@ module AmecStore::Spree
     end
 
     def price2=(p)
-      find_or_build_default_price2.amount = p
+      find_or_build_default_price2.amount = p if p.present?
     end
 
     def find_or_build_default_price2
@@ -43,7 +43,7 @@ module AmecStore::Spree
     end
 
     def price3=(p)
-      find_or_build_default_price3.amount = p
+      find_or_build_default_price3.amount = p if p.present?
     end
 
     def find_or_build_default_price3
