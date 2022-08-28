@@ -16,3 +16,5 @@ Spree.config do |config|
 end
 
 Spree.user_class = 'Spree::User'
+
+Spree::PermittedAttributes.line_item_attributes << :stock_location_id

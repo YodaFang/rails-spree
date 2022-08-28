@@ -14,6 +14,14 @@
     <%= button_tag '+', type: 'button', class: "border-left-0 shopping-cart-item-quantity-increase-btn", data: { id: dom_id(line_item) } %>
   </div>
 </div>
+<div class="shopping-cart-item-stock_location_id <%= additional_classes %>" data-hook="cart_item_stock_location_id">
+  <div class="d-flex align-items-center">
+    <%= item_form.collection_select :stock_location_id, available_stocks, :id, :name,
+        { prompt: Spree.t(:stock).upcase },
+        { class: 'form-control spree-flat-select',
+        aria: { label: Spree.t(:stock) } } %>
+  </div>
+</div>
 
 <% if view == "desktop" %>
   <div class="shopping-cart-item-total d-none d-lg-table-cell" data-hook="cart_item_total">
