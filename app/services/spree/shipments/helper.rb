@@ -1,8 +1,8 @@
 module Spree
   module Shipments
     module Helper
-      def add_or_update_line_item(order:, variant:, quantity:, shipment:)
-        result = add_item_service.call(order: order, variant: variant, quantity: quantity, options: { shipment: shipment })
+      def add_or_update_line_item(order:, variant:, quantity:, shipment:, stock_location_id: nil)
+        result = add_item_service.call(order: order, variant: variant, quantity: quantity, options: { shipment: shipment, stock_location_id: stock_location_id })
 
         if result.success?
           success(shipment.reload)

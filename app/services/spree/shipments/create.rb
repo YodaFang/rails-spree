@@ -41,7 +41,7 @@ module Spree
         )
         return failure(shipment) unless shipment.persisted?
 
-        success(order: order, variant: variant, quantity: quantity, shipment: shipment)
+        success(order: order, variant: variant, quantity: quantity, shipment: shipment, stock_location_id: stock_location.id)
       end
     end
   end
