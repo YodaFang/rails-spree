@@ -31,4 +31,4 @@ module AmecStore::Spree
   end
 end
 
-::Spree::LineItem.prepend AmecStore::Spree::LineItemDecorator
+::Spree::LineItem.prepend AmecStore::Spree::LineItemDecorator if ::Spree::LineItem.included_modules.exclude?(AmecStore::Spree::LineItemDecorator)

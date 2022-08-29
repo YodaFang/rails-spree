@@ -74,4 +74,4 @@ module AmecStore::Spree
   end
 end
 
-::Spree::Variant.prepend AmecStore::Spree::VariantDecorator
+::Spree::Variant.prepend AmecStore::Spree::VariantDecorator if ::Spree::Variant.included_modules.exclude?(AmecStore::Spree::VariantDecorator)

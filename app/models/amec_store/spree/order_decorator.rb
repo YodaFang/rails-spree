@@ -12,4 +12,4 @@ module AmecStore::Spree
   end
 end
 
-::Spree::Order.prepend AmecStore::Spree::OrderDecorator
+::Spree::Order.prepend AmecStore::Spree::OrderDecorator if ::Spree::Order.included_modules.exclude?(AmecStore::Spree::OrderDecorator)

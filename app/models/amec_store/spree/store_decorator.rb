@@ -11,4 +11,4 @@ module AmecStore::Spree
   end
 end
 
-::Spree::Store.prepend AmecStore::Spree::StoreDecorator
+::Spree::Store.prepend AmecStore::Spree::StoreDecorator if ::Spree::Store.included_modules.exclude?(AmecStore::Spree::StoreDecorator)

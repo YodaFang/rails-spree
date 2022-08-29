@@ -6,4 +6,4 @@ module Spree::Api
   end
 end
 
-::Spree::Api::BaseController.prepend Spree::Api::BaseControllerDecorator
+::Spree::Api::BaseController.prepend Spree::Api::BaseControllerDecorator if ::Spree::Api::BaseController.included_modules.exclude?(Spree::Api::BaseControllerDecorator)

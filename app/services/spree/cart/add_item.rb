@@ -30,6 +30,7 @@ module Spree
         end
 
         line_item.target_shipment = options[:shipment] if options.key? :shipment
+        line_item.stock_location_id = options[:stock_location_id] if options.key? :stock_location_id
         line_item.public_metadata = public_metadata.to_h if public_metadata
         line_item.private_metadata = private_metadata.to_h if private_metadata
 
