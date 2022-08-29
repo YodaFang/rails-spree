@@ -50,18 +50,6 @@ module AmecStore::Spree
       default_price3 || build_default_price3
     end
 
-    def price1
-      default_price1&.amount
-    end
-
-    def price2
-      default_price2&.amount
-    end
-
-    def price3
-      default_price3&.amount
-    end
-
     def price_by_count(count, currency = nil)
       if count.blank? || count < 100
         return default_price1 || default_price
