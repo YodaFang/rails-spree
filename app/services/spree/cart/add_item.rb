@@ -15,8 +15,10 @@ module Spree
       def add_to_line_item(order:, variant:, quantity: nil, public_metadata: {}, private_metadata: {}, options: {})
         options ||= {}
         quantity = quantity.present? ? quantity.to_i : 1
+        stock_id  = options[:stock_location_id]
 
-        line_item = Spree::Dependencies.line_item_by_variant_finder.constantize.new.execute(order: order, variant: variant, options: options)
+        # line_item = Spree::Dependencies.line_item_by_variant_finder.constantize.new.execute(order: order, variant: variant, options: options)
+        line_item = order.line_items.find { |l| l.variant_id == variant.id && l.stock_location_id == stock_id }
 
         line_item_created = line_item.nil?
         if line_item.nil?
@@ -24,13 +26,12 @@ module Spree
             result[attribute] = options[attribute]
           end.merge(currency: order.currency).delete_if { |_key, value| value.nil? }
 
-          line_item = order.line_items.new(quantity: quantity, variant: variant, options: opts)
+          line_item = order.line_items.new(quantity: quantity, variant: variant, options: opts, stock_location_id: stock_id)
         else
           line_item.quantity += quantity
         end
 
         line_item.target_shipment = options[:shipment] if options.key? :shipment
-        line_item.stock_location_id = options[:stock_location_id] if options.key? :stock_location_id
         line_item.public_metadata = public_metadata.to_h if public_metadata
         line_item.private_metadata = private_metadata.to_h if private_metadata
 
