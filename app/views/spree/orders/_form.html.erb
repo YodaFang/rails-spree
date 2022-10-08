@@ -1,19 +1,27 @@
 <div id="no-product-available" class="no-product-available-dropdown hide-on-esc">
   <%= render partial: 'spree/shared/no_product_available' %>
 </div>
-
+<h4 class="item-title">Warehouse Location: <span class="text-primary"><%= get_stock_name(line_items.first.stock_location_id) %></span></h4>
 <div class="d-table table-responsive" id="cart-detail" data-hook>
   <div class="active d-none d-lg-table-row shopping-cart-table-header" data-hook="cart_items_headers">
     <div class="d-table-cell cart-item-description-header text-uppercase"><%= Spree.t('cart_page.product') %></div>
     <div class="d-table-cell"></div>
     <div class="d-table-cell cart-item-price-header text-uppercase"><%= Spree.t(:price) %></div>
+    <div class="d-table-cell cart-item-total-header text-uppercase"><%= Spree.t(:warehouse) %>&nbsp&nbsp&nbsp</div>
     <div class="d-table-cell cart-item-quantity-header text-uppercase"><%= Spree.t('cart_page.quantity') %></div>
-    <div class="d-table-cell cart-item-total-header text-uppercase"><%= Spree.t(:staock) %></div>
     <div class="d-table-cell cart-item-total-header text-uppercase"><%= Spree.t(:total) %></div>
     <div class="d-table-cell cart-item-delete-header"></div>
   </div>
   <div id="line_items" class="shopping-cart-table-line-items" data-hook>
-    <%= render partial: 'spree/orders/line_item', collection: order_form.object.line_items, locals: { order_form: order_form } %>
+    <%= render partial: 'spree/orders/line_item', collection: line_items, locals: { order_form: order_form } %>
+    <div class="d-table-row">
+      <div class="d-table-cell">
+        <h4 class="item-title"><%= Spree.t(:subtotal) %></h4>
+      </div>
+      <div class="d-table-cell"></div> <div class="d-table-cell"></div> <div class="d-table-cell"></div>
+      <div class="d-table-cell"><%= line_items.sum(&:quantity) %></div>
+      <div class="d-table-cell"><%= Spree::Money.new(line_items.sum(&:amount)) %></div>
+    </div>
   </div>
 </div>
 
