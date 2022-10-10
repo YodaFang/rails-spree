@@ -26,6 +26,10 @@ module AmecStore::Spree
       end
     end
 
+    def price1
+      default_price1&.amount
+    end
+
     def price1=(p)
       find_or_build_default_price1.amount = p if p.present?
     end
@@ -34,12 +38,20 @@ module AmecStore::Spree
       default_price1 || build_default_price1
     end
 
+    def price2
+      default_price2&.amount
+    end
+
     def price2=(p)
       find_or_build_default_price2.amount = p if p.present?
     end
 
     def find_or_build_default_price2
       default_price2 || build_default_price2
+    end
+
+    def price3
+      default_price3&.amount
     end
 
     def price3=(p)
