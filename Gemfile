@@ -72,7 +72,6 @@ gem 'sidekiq'
 # Spree gems
 spree_opts = '>= 4.4.0'
 gem 'spree', spree_opts
-gem 'spree_sample', spree_opts
 gem 'spree_emails', spree_opts
 gem 'spree_backend', spree_opts
 gem 'spree_frontend', spree_opts
@@ -80,6 +79,7 @@ gem 'spree_gateway'
 gem 'spree_auth_devise'
 gem 'spree_i18n', '>= 5.0'
 gem 'spree_dev_tools', require: false, group: %w[test development]
+gem 'spree_sitemap', github: 'spree-contrib/spree_sitemap'
 
 # Sentry Client
 gem 'sentry-raven'
