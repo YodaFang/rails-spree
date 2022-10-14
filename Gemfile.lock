@@ -204,6 +204,8 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
+    et-orbi (1.2.7)
+      tzinfo
     execjs (2.8.1)
     factory_bot (4.11.1)
       activesupport (>= 3.0.0)
@@ -241,6 +243,9 @@ GEM
       rack
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
+    fugit (1.7.1)
+      et-orbi (~> 1, >= 1.2.7)
+      raabro (~> 1.4)
     gem-release (2.2.2)
     github_changelog_generator (1.16.4)
       activesupport
@@ -355,6 +360,7 @@ GEM
     public_suffix (4.0.6)
     puma (5.6.2)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     rabl (0.15.0)
       activesupport (>= 2.3.14)
     racc (1.6.0)
@@ -493,6 +499,13 @@ GEM
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
+    sidekiq-cron (1.8.0)
+      fugit (~> 1)
+      sidekiq (>= 4.2.1)
+    sidekiq-failures (1.0.4)
+      sidekiq (>= 4.0.0)
+    sidekiq-history (0.0.12)
+      sidekiq (>= 3.0.0)
     simple_po_parser (1.1.5)
     simplecov (0.21.2)
       docile (~> 1.1)
@@ -719,6 +732,9 @@ DEPENDENCIES
   sendgrid-actionmailer
   sentry-raven
   sidekiq
+  sidekiq-cron
+  sidekiq-failures
+  sidekiq-history (~> 0.0.12)
   spree (>= 4.4.0)
   spree_auth_devise
   spree_backend (>= 4.4.0)

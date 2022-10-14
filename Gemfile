@@ -68,6 +68,9 @@ gem 'rack-cache' # http caching
 
 # sidekiq
 gem 'sidekiq'
+gem 'sidekiq-cron'
+gem 'sidekiq-failures'
+gem 'sidekiq-history', '~> 0.0.12'
 
 # Spree gems
 spree_opts = '>= 4.4.0'
